@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { TokenContext } from '../App'
 import Login from '../components/Login'
@@ -13,7 +13,6 @@ const Modal = () => {
     const {token, setToken} = useContext(TokenContext)
 
     const history = useHistory()
-
     if (isLogin){
         return <Login setIsLogin={setIsLogin} setIsSignup={setIsSignup}/>
     }
@@ -42,14 +41,14 @@ const Modal = () => {
 
     return (
         <li className="nav-item dropdown active">
-            <a className="nav-link dropdown-toggle text-orange font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Account
+            <a className="nav-link dropdown-toggle text-orange font-weight-normal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user"></i> Account
             </a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div className="dropdown-menu" style={{fontSize:"1.5rem"}} aria-labelledby="navbarDropdown">
                 {
                     token ?
                 <>
-                    <a className="dropdown-item">My Profile</a>
+                    <Link to="/MyProfile" className="dropdown-item">My Profile</Link>
                     <div className="dropdown-divider"></div>
                     <a className="dropdown-item" onClick={handleLogout}>Logout</a>
                 </>
