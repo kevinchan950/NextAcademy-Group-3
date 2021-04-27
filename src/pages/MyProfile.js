@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react' 
+import { Link } from 'react-router-dom'
 import { TokenContext } from "../App"
 import Image from 'react-graceful-image'
 import UploadPicture from '../components/UploadPicture';
@@ -7,7 +8,6 @@ import IngredientEdit from '../components/IngredientEdit';
 import CuisineEdit from '../components/CuisineEdit';
 import RecipeEdit from '../components/RecipeEdit'
 import { toast } from 'react-toastify';
-import { Form } from 'react-bootstrap';
 import Payment from './Payment';
 
 
@@ -17,6 +17,7 @@ const MyProfile = () => {
     const [user, setUser] = useState([])
     const [cart, setCart] = useState([])
     const [total, setTotal] = useState(0)
+    const [order, setOrder] = useState([])
     useEffect(()=>{
         axios.get('http://127.0.0.1:5000/api/v1/users/me', {
             headers:{
@@ -41,8 +42,13 @@ const MyProfile = () => {
             })
             setTotal(total_amount)
         })
-        .catch(err=>{
-            console.log(err)
+        axios.get(`http://127.0.0.1:5000/api/v1/orders/me`,{
+            headers:{
+                "Authorization" : `Bearer ${token}`
+            }
+        })
+        .then(response=>{
+            setOrder(response.data.data)
         })
     },[])
     
@@ -244,8 +250,29 @@ const MyProfile = () => {
                             <h2>
                                 Order History <i class="fas fa-file-invoice-dollar"></i>
                             </h2>
-                            <div className="mt-5">
-                                <p>Order History Info</p>
+                            <div className="mt-5 px-5">
+                                <div className="row" style={{borderBottom:"2px groove"}}>
+                                    <div className="col-6">
+                                        Order ID:
+                                    </div>
+                                    <div className="col-6">
+                                        Total Amount:
+                                    </div>
+                                </div>
+                                {
+                                    order.map((o)=>{
+                                        return(
+                                            <div className="row">
+                                                <div className="col-6 mt-2">
+                                                    <Link to ={`/order/${o.id}`}>{o.id}</Link>
+                                                </div>
+                                                <div className="col-6 mt-2">
+                                                    {o.amount}
+                                                </div> 
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>

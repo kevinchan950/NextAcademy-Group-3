@@ -11,6 +11,50 @@ const Payment = ({setIsCheckout, cart}) => {
     const [total, setTotal] = useState("")
     const [instance, setInstance] = useState(null)
     
+
+    const deleteCart = () => {
+        axios({
+            method:"post",
+            url:`http://127.0.0.1:5000/api/v1/carts/delete`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+    }
+
+    const createOrder = () => {
+        
+        let formData = new FormData()
+        formData.append("total_amount", total)
+        axios({
+            method:"POST",
+            url: "http://127.0.0.1:5000/api/v1/orders/new",
+            headers: {
+                Authorization : `Bearer ${token}`
+            },
+            data: formData
+        })
+        .then(response=>{
+            const order = response.data.order_id
+            
+            cart.forEach((c)=>{
+                let formData = new FormData()
+                formData.append("quantity", c.quantity)
+                formData.append("amount", c.amount)
+                formData.append("name", c.ingredient)
+                formData.append("order_id", order)  
+                
+                axios({
+                    method:"POST",
+                    url: "http://127.0.0.1:5000/api/v1/orders/new/order_ingredients",
+                    headers: {
+                        Authorization : `Bearer ${token}`
+                    },
+                    data: formData
+                })
+            })
+        })
+    }
     
     async function handleBuy() {
         const { nonce } = await instance.requestPaymentMethod()
@@ -27,11 +71,14 @@ const Payment = ({setIsCheckout, cart}) => {
             data: formData
         })
         .then(response=>{
+            createOrder()
+            deleteCart()
             toast(response.data.message,{
                 autoClose:true,
                 position:"top-right"
             })
             setIsCheckout(false)
+            window.location.reload()
         })
     }
 

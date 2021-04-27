@@ -16,6 +16,7 @@ import AdminSignup from "./components/AdminSignup";
 import Western from "./pages/Western";
 import Asian from "./pages/Asian";
 import Recipe from "./pages/Recipe";
+import OrderIngredient from "./pages/OrderIngredient";
 
 
 function App() {
@@ -63,6 +64,10 @@ function App() {
 
         <Route exact path ="/recipe/:id">
           <Recipe />
+        </Route>
+
+        <Route exact path ="/order/:id">
+          <OrderIngredient />
         </Route>
 
         <Footer />
