@@ -235,7 +235,7 @@ const MyProfile = () => {
                                     })
                                 }
                                 <div className="mt-5">
-                                    Total Amount: RM {total}
+                                    Total Amount: RM {total.toFixed(2)}
                                 </div>
                                 <div>
                                     <button className="btn btn-primary mt-5" style={{width:"15%"}} onClick={handleCheckout}>Checkout</button>

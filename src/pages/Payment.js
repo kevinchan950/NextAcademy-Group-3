@@ -52,6 +52,9 @@ const Payment = ({setIsCheckout, cart}) => {
                     },
                     data: formData
                 })
+                .then(res=>{
+                    console.log("successssssssssssssssssssssssssssssssssss")
+                })
             })
         })
     }
@@ -116,7 +119,7 @@ const Payment = ({setIsCheckout, cart}) => {
                         }}
                     />
                     <div>
-                        Total amount: RM{total}
+                        Total amount: RM {total.toFixed(2)}
                     </div>
                     <button className="btn btn-primary mt-5" type="submit" style={{width:"10%"}} onClick={handleBuy}>Pay</button>
                 </div>              
