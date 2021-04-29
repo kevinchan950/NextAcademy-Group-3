@@ -64,9 +64,6 @@ const Login = ({setIsLogin, setIsSignup}) => {
                 autoClose:true,
                 position:"top-right"
             })
-            toast("Message here",{
-
-            })
             setIsLogin(false)
             history.push("/")
         })
