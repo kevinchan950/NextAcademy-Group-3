@@ -81,7 +81,6 @@ const Payment = ({setIsCheckout, cart}) => {
                 position:"top-right"
             })
             setIsCheckout(false)
-            window.location.reload()
         })
     }
 
