@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const WesternPro = ({setIsRecipePro}) => {
     const [recipePro, setRecipePro] = useState([])
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines/Western/recipes/pro`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines/Western/recipes/pro`)
         .then(response=>{
             setRecipePro(response.data.data)
         })

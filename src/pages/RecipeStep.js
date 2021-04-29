@@ -23,7 +23,7 @@ const RecipeStep =() =>{
         formData.append("step_description", stepDescription)
         axios({
             method: 'post',
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/${recipe}/steps/new`,
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/${recipe}/steps/new`,
             headers: {
                 Authorization : `Bearer ${token}`   
             },
@@ -45,7 +45,7 @@ const RecipeStep =() =>{
         formData.append("step_number", stepNumber)
         axios({
             method: 'post',
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/${recipe}/steps/delete`,
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/${recipe}/steps/delete`,
             headers:{
                 Authorization : `Bearer ${token}`
             },
@@ -67,7 +67,7 @@ const RecipeStep =() =>{
         formData.append("new_description", stepDescription)
         axios({
             method:"post",
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/${recipe}/steps/update`,
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/${recipe}/steps/update`,
             headers:{
                 Authorization : `Bearer ${token}`
             },
@@ -84,7 +84,7 @@ const RecipeStep =() =>{
     const handleCuisineSelection = (e) => {
         setCuisine(e.target.value)
         
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines/${e.target.value}/recipes`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines/${e.target.value}/recipes`)
         .then(response=>{
             setAllRecipe(response.data.data)
         })
@@ -98,7 +98,7 @@ const RecipeStep =() =>{
 
         axios({
             method:"get",
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/${e.target.value}/steps`
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/${e.target.value}/steps`
         })
         .then(response=>{
             setRecipeStep(response.data.data)
@@ -114,7 +114,7 @@ const RecipeStep =() =>{
     }
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines`)
         .then(response=>{
             setAllCuisine(response.data.data)
         })

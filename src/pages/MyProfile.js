@@ -19,7 +19,7 @@ const MyProfile = () => {
     const [total, setTotal] = useState(0)
     const [order, setOrder] = useState([])
     useEffect(()=>{
-        axios.get('http://127.0.0.1:5000/api/v1/users/me', {
+        axios.get('https://provision-backend.herokuapp.com/api/v1/users/me', {
             headers:{
                 "Authorization" : `Bearer ${token}`
             }
@@ -28,7 +28,7 @@ const MyProfile = () => {
             setUser(response.data)
         })
         
-        axios.get(`http://127.0.0.1:5000/api/v1/carts/me`,{
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/carts/me`,{
             headers:{
                 "Authorization" : `Bearer ${token}`
             }
@@ -42,7 +42,7 @@ const MyProfile = () => {
             })
             setTotal(total_amount)
         })
-        axios.get(`http://127.0.0.1:5000/api/v1/orders/me`,{
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/orders/me`,{
             headers:{
                 "Authorization" : `Bearer ${token}`
             }
@@ -101,7 +101,7 @@ const MyProfile = () => {
 
         axios({
             method:"post",
-            url: "http://127.0.0.1:5000/api/v1/carts/single/delete",
+            url: "https://provision-backend.herokuapp.com/api/v1/carts/single/delete",
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -123,7 +123,7 @@ const MyProfile = () => {
 
         axios({
             method:"post",
-            url:"http://127.0.0.1:5000/api/v1/carts/delete",
+            url:"https://provision-backend.herokuapp.com/api/v1/carts/delete",
             headers:{
                 Authorization:`Bearer ${token}`
             }

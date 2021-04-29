@@ -36,7 +36,7 @@ const IngredientEdit = ({setIsIngredientEdit}) => {
         
         axios({
             method:"POST",
-            url:"http://127.0.0.1:5000/api/v1/ingredients/new",
+            url:"https://provision-backend.herokuapp.com/api/v1/ingredients/new",
             headers:{
                 Authorization:`Bearer ${token}`
             },
@@ -65,7 +65,7 @@ const IngredientEdit = ({setIsIngredientEdit}) => {
 
         axios({
             method:"POST",
-            url:"http://127.0.0.1:5000/api/v1/ingredients/delete",
+            url:"https://provision-backend.herokuapp.com/api/v1/ingredients/delete",
             headers:{
                 Authorization:`Bearer ${token}`
             },
@@ -105,7 +105,7 @@ const IngredientEdit = ({setIsIngredientEdit}) => {
 
         axios({
             method:"post",
-            url:"http://127.0.0.1:5000/api/v1/ingredients/update",
+            url:"https://provision-backend.herokuapp.com/api/v1/ingredients/update",
             headers:{
                 Authorization:`Bearer ${token}`
             },
@@ -167,7 +167,7 @@ const IngredientEdit = ({setIsIngredientEdit}) => {
     }
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/ingredients`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/ingredients`)
         .then(response=>{
             setAllIngredient(response.data.data)
         })

@@ -3,8 +3,9 @@ import Image from 'react-graceful-image'
 import ReactMapGL, { Marker, Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl } from 'react-map-gl'
 
 
-const HomePage = () => {
 
+const HomePage = () => {
+    
     const [viewport, setViewport] = useState({
         
         latitude: 3.1509741500323534,
@@ -36,7 +37,6 @@ const HomePage = () => {
         left: 0,
         padding: '10px'
     };
-
     return (
         <>
             <div className="bg-body-theme">

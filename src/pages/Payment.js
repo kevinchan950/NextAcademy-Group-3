@@ -15,7 +15,7 @@ const Payment = ({setIsCheckout, cart}) => {
     const deleteCart = () => {
         axios({
             method:"post",
-            url:`http://127.0.0.1:5000/api/v1/carts/delete`,
+            url:`https://provision-backend.herokuapp.com/api/v1/carts/delete`,
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -28,7 +28,7 @@ const Payment = ({setIsCheckout, cart}) => {
         formData.append("total_amount", total)
         axios({
             method:"POST",
-            url: "http://127.0.0.1:5000/api/v1/orders/new",
+            url: "https://provision-backend.herokuapp.com/api/v1/orders/new",
             headers: {
                 Authorization : `Bearer ${token}`
             },
@@ -46,7 +46,7 @@ const Payment = ({setIsCheckout, cart}) => {
                 
                 axios({
                     method:"POST",
-                    url: "http://127.0.0.1:5000/api/v1/orders/new/order_ingredients",
+                    url: "https://provision-backend.herokuapp.com/api/v1/orders/new/order_ingredients",
                     headers: {
                         Authorization : `Bearer ${token}`
                     },
@@ -67,7 +67,7 @@ const Payment = ({setIsCheckout, cart}) => {
     
         axios({
             method:"post",
-            url: 'http://127.0.0.1:5000/api/v1/payments/pay',
+            url: 'https://provision-backend.herokuapp.com/api/v1/payments/pay',
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -86,7 +86,7 @@ const Payment = ({setIsCheckout, cart}) => {
     }
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/payments/client_token`,{
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/payments/client_token`,{
             headers:{
                 Authorization: `Bearer ${token}`
             }

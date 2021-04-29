@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import { BrowserRouter } from 'react-router-dom'
+import "react-toastify/dist/ReactToastify.min.css"
 
 ReactDOM.render(
   <React.StrictMode>

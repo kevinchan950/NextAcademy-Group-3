@@ -18,7 +18,7 @@ const UploadPicture = ({setIsUploadPage}) => {
 
         let formData = new FormData();
         formData.append("image", imageFile)
-        axios.post(`http://127.0.0.1:5000/api/v1/users/uploadImage`, formData,{
+        axios.post(`https://provision-backend.herokuapp.com/api/v1/users/uploadImage`, formData,{
             headers : {
                 "Authorization" : `Bearer ${token}`
             }

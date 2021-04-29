@@ -22,7 +22,7 @@ const RecipeIngredient =() =>{
         formData.append("name", ingredient)
         axios({
             method: 'post',
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/${recipe}/ingredients/new`,
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/${recipe}/ingredients/new`,
             headers: {
                 Authorization : `Bearer ${token}`   
             },
@@ -45,7 +45,7 @@ const RecipeIngredient =() =>{
         formData.append("name", ingredient)
         axios({
             method: 'post',
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/${recipe}/ingredients/delete`,
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/${recipe}/ingredients/delete`,
             headers:{
                 Authorization : `Bearer ${token}`
             },
@@ -62,7 +62,7 @@ const RecipeIngredient =() =>{
     const handleCuisineSelection = (e) => {
         setCuisine(e.target.value)
         
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines/${e.target.value}/recipes`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines/${e.target.value}/recipes`)
         .then(response=>{
             setAllRecipe(response.data.data)
         })
@@ -74,7 +74,7 @@ const RecipeIngredient =() =>{
     const handleRecipeSelection = (e) => {
         setRecipe(e.target.value)
 
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/${e.target.value}/ingredients`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/${e.target.value}/ingredients`)
         .then(response=>{
             setAllIngredient(response.data.data)
         })
@@ -93,7 +93,7 @@ const RecipeIngredient =() =>{
     }
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines`)
         .then(response=>{
             setAllCuisine(response.data.data)
         })

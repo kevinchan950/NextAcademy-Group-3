@@ -6,7 +6,7 @@ const AsianPro = ({setIsRecipePro}) => {
     
     const [recipePro, setRecipePro] = useState([])
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines/Asian/recipes/pro`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines/Asian/recipes/pro`)
         .then(response=>{
             setRecipePro(response.data.data)
         })

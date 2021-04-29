@@ -36,7 +36,7 @@ const RecipeEdit = ({setIsRecipeEdit}) => {
 
         axios({
             method: 'post',
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/new`,
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/new`,
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -61,7 +61,7 @@ const RecipeEdit = ({setIsRecipeEdit}) => {
         e.preventDefault()
         axios({
             method: 'post',
-            url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/delete`,
+            url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/delete`,
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -93,7 +93,7 @@ const RecipeEdit = ({setIsRecipeEdit}) => {
         if (recipeUpdateField == "name" || recipeUpdateField == "difficulty"){
             axios({
                 method: 'post',
-                url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/update`,
+                url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/update`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -120,7 +120,7 @@ const RecipeEdit = ({setIsRecipeEdit}) => {
             formData.append("update_field", recipeUpdateField)
             axios({
                 method: 'post',
-                url: `http://127.0.0.1:5000/api/v1/cuisines/${cuisine}/recipes/update`,
+                url: `https://provision-backend.herokuapp.com/api/v1/cuisines/${cuisine}/recipes/update`,
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -149,7 +149,7 @@ const RecipeEdit = ({setIsRecipeEdit}) => {
     const handleCuisineRecipeSelection = (e) =>{
         setCuisine(e.target.value)
 
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines/${e.target.value}/recipes`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines/${e.target.value}/recipes`)
         .then(response=>{
             setAllRecipe(response.data.data)
         })
@@ -179,7 +179,7 @@ const RecipeEdit = ({setIsRecipeEdit}) => {
     }
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines`)
         .then(response=>{
             setAllCuisine(response.data.data)
         })

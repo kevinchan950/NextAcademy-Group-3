@@ -23,7 +23,7 @@ const Signup = ({setIsLogin, setIsSignup}) => {
 
     const handleSignupSubmit = (e) => {
         e.preventDefault()
-        axios.post(`http://127.0.0.1:5000/api/v1/sessions/signup`,{
+        axios.post(`https://provision-backend.herokuapp.com/api/v1/sessions/signup`,{
             username, email , password
         })
         .then(response=>{
@@ -73,7 +73,7 @@ const Signup = ({setIsLogin, setIsSignup}) => {
         }
         else{
             const newEmailTimeoutID = setTimeout(()=>{
-                axios.get("http://127.0.0.1:5000/api/v1/sessions/signup/checkemail=" + email)
+                axios.get("https://provision-backend.herokuapp.com/api/v1/sessions/signup/checkemail=" + email)
                 .then(response=>{
                     if (response.data.exist){
                         toast("Email has been registered!",{
@@ -119,7 +119,7 @@ const Signup = ({setIsLogin, setIsSignup}) => {
         }
         else{
             const newUsernameTimeoutID = setTimeout(()=>{
-                axios.get("http://127.0.0.1:5000/api/v1/sessions/signup/checkusername=" + username)
+                axios.get("https://provision-backend.herokuapp.com/api/v1/sessions/signup/checkusername=" + username)
                 .then(response=>{
                     if (response.data.exist){
                         toast("Username has been registered!",{

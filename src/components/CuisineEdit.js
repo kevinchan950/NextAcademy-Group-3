@@ -18,7 +18,7 @@ const CuisineEdit = ({setIsCuisineEdit}) => {
         e.preventDefault()
         axios({
             method: 'post',
-            url: 'http://127.0.0.1:5000/api/v1/cuisines/new',
+            url: 'https://provision-backend.herokuapp.com/api/v1/cuisines/new',
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -45,7 +45,7 @@ const CuisineEdit = ({setIsCuisineEdit}) => {
         e.preventDefault()
         axios({
             method: 'post',
-            url: 'http://127.0.0.1:5000/api/v1/cuisines/delete',
+            url: 'https://provision-backend.herokuapp.com/api/v1/cuisines/delete',
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -72,7 +72,7 @@ const CuisineEdit = ({setIsCuisineEdit}) => {
         e.preventDefault()
         axios({
             method: 'post',
-            url: 'http://127.0.0.1:5000/api/v1/cuisines/update',
+            url: 'https://provision-backend.herokuapp.com/api/v1/cuisines/update',
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -109,7 +109,7 @@ const CuisineEdit = ({setIsCuisineEdit}) => {
     }
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines`)
         .then(response=>{
             setAllCuisine(response.data.data)
         })

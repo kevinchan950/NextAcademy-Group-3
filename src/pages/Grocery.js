@@ -23,7 +23,7 @@ const Grocery = () => {
 
         axios({
             method:"POST",
-            url:"http://127.0.0.1:5000/api/v1/carts/new",
+            url:"https://provision-backend.herokuapp.com/api/v1/carts/new",
             headers:{
                 Authorization:`Bearer ${token}`
             },
@@ -42,7 +42,7 @@ const Grocery = () => {
     }
 
     useEffect(()=>{
-        axios.get('http://127.0.0.1:5000/api/v1/ingredients')
+        axios.get('https://provision-backend.herokuapp.com/api/v1/ingredients')
         .then(response=>{
             setAllIngredient(response.data.data)
         })

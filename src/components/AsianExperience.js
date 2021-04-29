@@ -6,7 +6,7 @@ const AsianExperience = ({setIsRecipeExperience}) => {
     
     const [recipeExperience, setRecipeExperience] = useState([])
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/api/v1/cuisines/Asian/recipes/experienced`)
+        axios.get(`https://provision-backend.herokuapp.com/api/v1/cuisines/Asian/recipes/experienced`)
         .then(response=>{
             setRecipeExperience(response.data.data)
         })
